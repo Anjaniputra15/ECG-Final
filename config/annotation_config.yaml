@@ -1,0 +1,30 @@
+# CVAT and PALMS integration settings
+cvat:
+  server_url: "http://localhost:8080"
+  username: ""
+  password: ""
+  project_name: "ECG_PQRST_Detection"
+  task_prefix: "ecg_batch_"
+  
+palms:
+  api_endpoint: ""
+  api_key: ""
+  model_version: "v1.0"
+  
+annotation_tools:
+  neurokit2:
+    enabled: true
+    method: "pantompkins1985"  # Options: pantompkins1985, hamilton2002, etc.
+    
+  py_ecg_detectors:
+    enabled: true
+    detector: "pan_tompkins"  # Options: pan_tompkins, hamilton, christov
+    
+active_learning:
+  strategy: "uncertainty"  # Options: uncertainty, diversity, hybrid
+  batch_size: 10
+  confidence_threshold: 0.85
+  
+quality_control:
+  inter_annotator_agreement: 0.8
+  expert_review_percentage: 0.2

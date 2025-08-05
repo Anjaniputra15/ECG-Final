@@ -1,0 +1,23 @@
+# M3-specific optimization settings
+device:
+  type: "mps"  # Metal Performance Shaders for M3
+  memory_fraction: 0.8
+  
+batch_size:
+  train: 16
+  validation: 32
+  inference: 64
+
+precision:
+  mixed: true
+  fp16: true
+
+memory:
+  pin_memory: true
+  non_blocking: true
+  cache_dataset: true
+  
+optimization:
+  gradient_accumulation_steps: 4
+  dataloader_num_workers: 4
+  prefetch_factor: 2

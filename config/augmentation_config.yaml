@@ -1,0 +1,64 @@
+# Data augmentation parameters
+time_domain:
+  time_warp:
+    enabled: true
+    sigma: 0.2
+    knots: 4
+    
+  amplitude_scaling:
+    enabled: true
+    scale_range: [0.8, 1.2]
+    
+  time_shift:
+    enabled: true
+    shift_range: [-0.1, 0.1]  # As fraction of signal length
+    
+  gaussian_noise:
+    enabled: true
+    std_range: [0.01, 0.05]
+
+frequency_domain:
+  spec_augment:
+    enabled: true
+    freq_mask_param: 8
+    time_mask_param: 10
+    num_masks: 2
+    
+  bandpass_filter:
+    enabled: true
+    low_freq: [0.5, 1.0]
+    high_freq: [40, 50]
+
+spatial_transforms:
+  elastic_deformation:
+    enabled: true
+    alpha: 10
+    sigma: 3
+    
+  rotation:
+    enabled: true
+    angle_range: [-5, 5]  # degrees
+    
+  grid_distortion:
+    enabled: true
+    num_steps: 5
+    distort_limit: 0.1
+
+mixup_cutmix:
+  mixup:
+    enabled: true
+    alpha: 0.4
+    
+  cutmix:
+    enabled: true
+    alpha: 1.0
+    cutmix_prob: 0.5
+
+synthetic_generation:
+  gan_augmentation:
+    enabled: false  # Enable when GAN model is trained
+    num_synthetic: 100
+    
+  vae_augmentation:
+    enabled: false  # Enable when VAE model is trained
+    latent_dim: 128

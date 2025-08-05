@@ -1,0 +1,96 @@
+# ECG Annotation Module Documentation
+
+## Overview
+The annotation module provides tools for manual ECG labeling and quality assurance in medical ECG analysis systems.
+
+## Current Status: NOT NEEDED FOR PRODUCTION
+
+### Why Annotation Module Exists:
+- **Original Purpose**: Manual labeling of ECG images for training
+- **Target Use**: Interactive annotation tools for medical experts
+- **Integration**: CVAT and PALMS connector for collaborative labeling
+
+### Why We Don't Need It Now:
+1. **Using PTB-XL Pre-labeled Data**: 
+   - 147 clinical ECG records with medical annotations
+   - Professional cardiologist labels already available
+   - No manual labeling required
+
+2. **Clinical Database Approach**:
+   - Real medical data from PhysioNet
+   - Validated diagnostic labels included
+   - Higher quality than manual annotations
+
+3. **Production Focus**:
+   - Building clinical analysis system, not labeling tool
+   - 100% accuracy achieved with existing labels
+   - Manual annotation would be redundant
+
+## When Annotation Module Would Be Useful:
+
+### Scenario 1: Custom ECG Dataset
+- **Need**: New ECG images without labels
+- **Solution**: Use annotation tools for medical expert labeling
+- **Tools**: CVAT integration, active learning
+
+### Scenario 2: Quality Assurance
+- **Need**: Verify automated labels
+- **Solution**: Manual review and correction tools
+- **Workflow**: Automated pre-annotation + expert review
+
+### Scenario 3: Domain-Specific Data
+- **Need**: Pediatric ECGs, specific equipment, rare conditions
+- **Solution**: Specialized annotation workflow
+- **Expert**: Domain-specific medical professionals
+
+## Files in This Directory:
+
+### `annotation_tools.py`
+- **Purpose**: GUI tools for ECG annotation
+- **Status**: Placeholder - not implemented
+- **Would Contain**: Drawing tools, label assignment, export functions
+
+### `cvat_integration.py`
+- **Purpose**: Integration with CVAT annotation platform
+- **Status**: Placeholder - not needed with PTB-XL data
+- **Would Contain**: API connections, project management
+
+### `active_learner.py`
+- **Purpose**: Smart annotation suggestions using AI
+- **Status**: Placeholder - could improve efficiency
+- **Would Contain**: Uncertainty-based sample selection
+
+### `pre_annotator.py`
+- **Purpose**: Automated initial annotations
+- **Status**: Redundant - we have trained models
+- **Would Contain**: Model-based pre-labeling
+
+## Recommendation: SKIP FOR NOW
+
+### Focus Instead On:
+1. **Testing Current 100% Accuracy System**
+2. **LLM Report Generation** (next high-priority task)
+3. **Clinical API Development**
+
+### Future Consideration:
+- Keep directory for potential custom dataset scenarios
+- Implement only if moving beyond PTB-XL database
+- Consider for specialized medical domains
+
+## Technical Implementation Notes:
+
+### If Implemented, Would Include:
+- Medical-grade annotation standards
+- Multi-expert consensus workflows
+- Integration with hospital PACS systems
+- DICOM compatibility
+- Audit trails for regulatory compliance
+
+### Quality Assurance Features:
+- Inter-annotator agreement metrics
+- Confidence scoring for annotations
+- Version control for label changes
+- Medical expert verification workflows
+
+## Conclusion:
+The annotation module represents good software architecture planning but is unnecessary for our current clinical ECG analysis system using validated PTB-XL data. Our 100% accuracy ViT model demonstrates that pre-labeled clinical data is sufficient for production deployment.

@@ -1,0 +1,33 @@
+# Model architecture and hyperparameters
+backbone:
+  type: "hubert_ecg"  # Options: hubert_ecg, mobilenet_ecg, resnet_ecg
+  pretrained: true
+  freeze_layers: 5
+
+heads:
+  pqrst_detector:
+    enabled: true
+    num_keypoints: 5  # P, Q, R, S, T
+    hidden_dim: 256
+    
+  classifier:
+    enabled: true
+    num_classes: 12  # Common ECG conditions
+    dropout: 0.3
+    
+  segmenter:
+    enabled: true
+    num_leads: 12
+    mask_ratio: 0.15
+
+training:
+  learning_rate: 0.001
+  weight_decay: 0.01
+  scheduler: "cosine"
+  warmup_epochs: 5
+  max_epochs: 100
+  
+augmentation:
+  probability: 0.8
+  noise_std: 0.05
+  time_warp_ratio: 0.1
