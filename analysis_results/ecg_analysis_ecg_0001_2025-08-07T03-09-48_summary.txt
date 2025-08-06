@@ -1,0 +1,80 @@
+
+🏥 ECG ANALYSIS SUMMARY REPORT
+==================================================
+📁 Image: ecg_0001.png
+📅 Analysis Date: 2025-08-07T03:09:48
+
+📊 TECHNICAL FINDINGS:
+   Heart Rate: 288 BPM - Tachycardia
+   R-peaks Detected: 48
+   Detection Quality: Very poor detection quality - results may be unreliable
+   Risk Level: HIGH
+
+🤖 AI ANALYSIS:
+   Status: ✅ Enhanced with Gemini AI
+   
+💡 RECOMMENDATIONS:
+   • Immediate medical evaluation recommended
+   • Consider continuous cardiac monitoring
+   • Manual ECG review recommended due to low detection confidence
+
+🔬 DETAILED AI ANALYSIS:
+------------------------------
+## ECG Analysis Report
+
+**Patient:** (Information unavailable from provided data)
+**Date/Time:** (Information unavailable from provided data)
+
+**1. RHYTHM ASSESSMENT:**
+
+*   **Rhythm:** The ECG demonstrates a rapid, regular rhythm.
+*   **Arrhythmia:** Given the estimated heart rate of approximately 288 BPM, the rhythm is consistent with a supraventricular tachycardia (SVT), specifically likely atrial flutter or atrial fibrillation with rapid ventricular response. The regularity of the R-R intervals suggests atrial flutter is more likely than atrial fibrillation.
+*   **Heart Rate:** The estimated heart rate is significantly elevated at approximately 288 BPM.
+*   **Heart Rate Variability:** Minimal heart rate variability is observed.
+
+**2. WAVEFORM ANALYSIS:**
+
+*   **P-waves:** P-waves are not clearly discernible, likely due to the rapid heart rate and the presence of flutter waves (if atrial flutter) or fibrillatory waves (if atrial fibrillation).
+*   **QRS Complexes:** The QRS complexes appear narrow, suggesting a supraventricular origin of the tachycardia. The morphology appears generally normal, though detailed assessment is limited by the rapid rate and noise.
+*   **T-waves:** T-waves are difficult to identify due to the rapid heart rate and baseline noise.
+*   **Intervals:**
+    *   **PR Interval:** Cannot be accurately assessed due to the absence of discernible P-waves.
+    *   **QRS Duration:** Appears normal, but precise measurement is difficult.
+    *   **QT Interval:** Cannot be accurately assessed due to the rapid heart rate and difficulty in identifying the end of the T-wave.
+
+**3. CLINICAL SIGNIFICANCE:**
+
+*   **Overall Cardiac Health:** This ECG indicates a significant cardiac abnormality. The rapid heart rate can lead to hemodynamic instability, including decreased cardiac output and potential for myocardial ischemia.
+*   **Concerning Findings:** The primary concerning finding is the extremely rapid heart rate, indicative of a supraventricular tachycardia.
+*   **Clinical Urgency:** **HIGH**. This ECG represents a potentially life-threatening arrhythmia requiring immediate medical intervention.
+
+**4. MEDICAL RECOMMENDATIONS:**
+
+*   **Immediate Actions:**
+    *   **Emergency Medical Services (EMS) Activation:** The patient requires immediate transport to the nearest emergency department.
+    *   **Continuous Monitoring:** Continuous ECG monitoring is essential.
+    *   **Oxygen Administration:** Administer supplemental oxygen to maintain adequate oxygen saturation.
+    *   **Establish IV Access:** Establish intravenous access for medication administration.
+*   **Emergency Department Management:**
+    *   **Vagal Maneuvers:** Attempt vagal maneuvers (e.g., carotid sinus massage, Valsalva maneuver) under close monitoring.
+    *   **Pharmacological Intervention:** If vagal maneuvers are unsuccessful, consider pharmacological intervention with adenosine (if regular rhythm) or other appropriate antiarrhythmic medications (e.g., calcium channel blockers, beta-blockers) under the guidance of a physician.
+    *   **Electrical Cardioversion:** If the patient is hemodynamically unstable or pharmacological interventions are unsuccessful, electrical cardioversion may be necessary.
+*   **Follow-up Care:**
+    *   **Electrophysiology Study (EPS):** After stabilization, an electrophysiology study may be indicated to identify the underlying mechanism of the arrhythmia and consider catheter ablation.
+    *   **Echocardiogram:** An echocardiogram should be performed to assess cardiac structure and function.
+*   **Patient Counseling:**
+    *   Explain the nature of the arrhythmia and the importance of adherence to treatment.
+    *   Discuss lifestyle modifications, such as avoiding stimulants (caffeine, nicotine) and managing stress.
+    *   Educate the patient on recognizing symptoms of recurrent arrhythmia and seeking prompt medical attention.
+
+**5. RISK STRATIFICATION:**
+
+*   **Overall Cardiovascular Risk Level:** High. The presence of a sustained supraventricular tachycardia significantly increases the risk of adverse cardiovascular events.
+*   **Specific Risk Factors Identified:** The primary risk factor is the presence of the arrhythmia itself. Further evaluation is needed to identify any underlying structural heart disease or other contributing factors.
+*   **Prognosis Assessment:** The prognosis depends on the underlying cause of the arrhythmia, the effectiveness of treatment, and the presence of any coexisting cardiac conditions. With appropriate management, the prognosis can be improved.
+
+**Disclaimer:** This ECG analysis is based solely on the provided image and technical data. A complete clinical evaluation, including patient history, physical examination, and additional diagnostic testing, is necessary for accurate diagnosis and treatment. This report should not be used as a substitute for professional medical advice.
+
+
+==================================================
+⚠️  This analysis is for educational purposes. Consult a physician for medical decisions.

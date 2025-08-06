@@ -1,0 +1,25 @@
+{
+  "bootstrap_summary": {
+    "training_date": "2025-08-07T02:46:37.232508",
+    "training_epochs": 10,
+    "final_training_loss": 0.027549689300358296,
+    "loss_improvement_percent": 94.24999769574244
+  },
+  "model_performance": {
+    "average_max_confidence": 0.015031378157436848,
+    "average_detections_at_05": 0.0,
+    "average_detections_at_06": 0.0,
+    "images_tested": 5
+  },
+  "comparison_to_random": {
+    "random_model_confidence": 0.395,
+    "trained_model_confidence": 0.015031378157436848,
+    "confidence_improvement": 0
+  },
+  "next_steps": [
+    "Model shows trained weights vs random initialization",
+    "Further fine-tuning on real ECG data recommended",
+    "Consider data augmentation for better generalization",
+    "Evaluate on larger test set for robust metrics"
+  ]
+}

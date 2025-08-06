@@ -1,0 +1,130 @@
+{
+  "status": "success",
+  "image_path": "data/raw/scanned_ecgs/ecg_0001.png",
+  "timestamp": "2025-08-07T03:09:48.857269",
+  "technical_analysis": {
+    "timestamp": "2025-08-07T03:09:39.065489",
+    "detection_summary": {
+      "total_detections": 48,
+      "high_confidence_detections": 48,
+      "estimated_heart_rate_bpm": 288,
+      "max_confidence": 0.9883308410644531,
+      "mean_confidence": 0.18301863968372345,
+      "confidence_std": 0.30176806449890137
+    },
+    "heart_rate_analysis": {
+      "estimated_bpm": 288,
+      "hr_category": "Tachycardia",
+      "hr_assessment": "Severe tachycardia - immediate medical evaluation required"
+    },
+    "rhythm_analysis": {
+      "rr_intervals": [
+        "0.08209261",
+        "0.12243214",
+        "0.08468795",
+        "0.12992206",
+        "0.09952527",
+        "0.08824456",
+        "0.081089675",
+        "0.43802568",
+        "0.069779605",
+        "0.06800783",
+        "0.1210908",
+        "0.0074664354",
+        "0.13099572",
+        "0.23842606",
+        "0.060400724",
+        "0.10047987",
+        "0.025460422",
+        "0.16136321",
+        "0.03160146",
+        "0.034306914",
+        "0.1699327",
+        "0.055385053",
+        "0.05226803",
+        "0.12617153",
+        "0.045049608",
+        "0.09742373",
+        "0.122947454",
+        "0.04024139",
+        "0.00084784627",
+        "0.025828421",
+        "0.05922997",
+        "0.026848137",
+        "0.031428993",
+        "0.0997901",
+        "0.11695707",
+        "0.13128367",
+        "0.015029609",
+        "0.080550194",
+        "0.10796559",
+        "0.06766161",
+        "0.16223603",
+        "0.25084266",
+        "0.17441675",
+        "0.11174947",
+        "0.06901613",
+        "0.08623144",
+        "0.05401343"
+      ],
+      "hrv_metrics": {
+        "mean_rr_interval": 0.09695202112197876,
+        "rr_std": 0.07391510158777237,
+        "rr_variability_coefficient": 0.7623884677886963,
+        "num_intervals": 47
+      },
+      "rhythm_regularity": {
+        "assessment": "Highly irregular rhythm - possible arrhythmia",
+        "variability_coefficient": 0.7623884677886963,
+        "regularity_score": 0.1,
+        "rr_std": 0.07391510158777237,
+        "rr_mean": 0.09695202112197876
+      }
+    },
+    "confidence_analysis": {
+      "detection_quality": "Very poor detection quality - results may be unreliable",
+      "confidence_interpretation": "Low confidence detections - manual review recommended"
+    },
+    "clinical_assessment": {
+      "risk_level": "HIGH",
+      "risk_factors": [
+        "Abnormal heart rate",
+        "Poor detection quality",
+        "Irregular rhythm detected"
+      ],
+      "recommendations": [
+        "Immediate medical evaluation recommended",
+        "Consider continuous cardiac monitoring",
+        "Manual ECG review recommended due to low detection confidence"
+      ],
+      "urgency": "IMMEDIATE",
+      "follow_up_needed": true
+    }
+  },
+  "gemini_analysis": {
+    "status": "success",
+    "image_analyzed": "ecg_0001.png",
+    "detection_summary": {
+      "r_peaks_detected": 48,
+      "max_confidence": 0.9883308410644531,
+      "mean_confidence": 0.18301863310237726
+    },
+    "gemini_analysis": "## ECG Analysis Report\n\n**Patient:** (Information unavailable from provided data)\n**Date/Time:** (Information unavailable from provided data)\n\n**1. RHYTHM ASSESSMENT:**\n\n*   **Rhythm:** The ECG demonstrates a rapid, regular rhythm.\n*   **Arrhythmia:** Given the estimated heart rate of approximately 288 BPM, the rhythm is consistent with a supraventricular tachycardia (SVT), specifically likely atrial flutter or atrial fibrillation with rapid ventricular response. The regularity of the R-R intervals suggests atrial flutter is more likely than atrial fibrillation.\n*   **Heart Rate:** The estimated heart rate is significantly elevated at approximately 288 BPM.\n*   **Heart Rate Variability:** Minimal heart rate variability is observed.\n\n**2. WAVEFORM ANALYSIS:**\n\n*   **P-waves:** P-waves are not clearly discernible, likely due to the rapid heart rate and the presence of flutter waves (if atrial flutter) or fibrillatory waves (if atrial fibrillation).\n*   **QRS Complexes:** The QRS complexes appear narrow, suggesting a supraventricular origin of the tachycardia. The morphology appears generally normal, though detailed assessment is limited by the rapid rate and noise.\n*   **T-waves:** T-waves are difficult to identify due to the rapid heart rate and baseline noise.\n*   **Intervals:**\n    *   **PR Interval:** Cannot be accurately assessed due to the absence of discernible P-waves.\n    *   **QRS Duration:** Appears normal, but precise measurement is difficult.\n    *   **QT Interval:** Cannot be accurately assessed due to the rapid heart rate and difficulty in identifying the end of the T-wave.\n\n**3. CLINICAL SIGNIFICANCE:**\n\n*   **Overall Cardiac Health:** This ECG indicates a significant cardiac abnormality. The rapid heart rate can lead to hemodynamic instability, including decreased cardiac output and potential for myocardial ischemia.\n*   **Concerning Findings:** The primary concerning finding is the extremely rapid heart rate, indicative of a supraventricular tachycardia.\n*   **Clinical Urgency:** **HIGH**. This ECG represents a potentially life-threatening arrhythmia requiring immediate medical intervention.\n\n**4. MEDICAL RECOMMENDATIONS:**\n\n*   **Immediate Actions:**\n    *   **Emergency Medical Services (EMS) Activation:** The patient requires immediate transport to the nearest emergency department.\n    *   **Continuous Monitoring:** Continuous ECG monitoring is essential.\n    *   **Oxygen Administration:** Administer supplemental oxygen to maintain adequate oxygen saturation.\n    *   **Establish IV Access:** Establish intravenous access for medication administration.\n*   **Emergency Department Management:**\n    *   **Vagal Maneuvers:** Attempt vagal maneuvers (e.g., carotid sinus massage, Valsalva maneuver) under close monitoring.\n    *   **Pharmacological Intervention:** If vagal maneuvers are unsuccessful, consider pharmacological intervention with adenosine (if regular rhythm) or other appropriate antiarrhythmic medications (e.g., calcium channel blockers, beta-blockers) under the guidance of a physician.\n    *   **Electrical Cardioversion:** If the patient is hemodynamically unstable or pharmacological interventions are unsuccessful, electrical cardioversion may be necessary.\n*   **Follow-up Care:**\n    *   **Electrophysiology Study (EPS):** After stabilization, an electrophysiology study may be indicated to identify the underlying mechanism of the arrhythmia and consider catheter ablation.\n    *   **Echocardiogram:** An echocardiogram should be performed to assess cardiac structure and function.\n*   **Patient Counseling:**\n    *   Explain the nature of the arrhythmia and the importance of adherence to treatment.\n    *   Discuss lifestyle modifications, such as avoiding stimulants (caffeine, nicotine) and managing stress.\n    *   Educate the patient on recognizing symptoms of recurrent arrhythmia and seeking prompt medical attention.\n\n**5. RISK STRATIFICATION:**\n\n*   **Overall Cardiovascular Risk Level:** High. The presence of a sustained supraventricular tachycardia significantly increases the risk of adverse cardiovascular events.\n*   **Specific Risk Factors Identified:** The primary risk factor is the presence of the arrhythmia itself. Further evaluation is needed to identify any underlying structural heart disease or other contributing factors.\n*   **Prognosis Assessment:** The prognosis depends on the underlying cause of the arrhythmia, the effectiveness of treatment, and the presence of any coexisting cardiac conditions. With appropriate management, the prognosis can be improved.\n\n**Disclaimer:** This ECG analysis is based solely on the provided image and technical data. A complete clinical evaluation, including patient history, physical examination, and additional diagnostic testing, is necessary for accurate diagnosis and treatment. This report should not be used as a substitute for professional medical advice.\n",
+    "timestamp": "2025-08-07 03:09:48",
+    "api_model": "gemini-2.0-flash-exp"
+  },
+  "patient_info": {},
+  "combined_assessment": {
+    "overall_risk_level": "HIGH",
+    "heart_rate_assessment": "288 BPM - Tachycardia",
+    "detection_reliability": "Very poor detection quality - results may be unreliable",
+    "ai_analysis_available": true,
+    "recommendations": [
+      "Immediate medical evaluation recommended",
+      "Consider continuous cardiac monitoring",
+      "Manual ECG review recommended due to low detection confidence"
+    ],
+    "ai_insights": "Gemini AI medical analysis completed",
+    "ai_enhanced": true
+  }
+}

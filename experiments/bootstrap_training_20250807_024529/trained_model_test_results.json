@@ -1,0 +1,62 @@
+[
+  {
+    "image_name": "ecg_0064.png",
+    "max_confidence": 0.013559449464082718,
+    "mean_confidence": 0.004862852860242128,
+    "threshold_detections": {
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 0
+    }
+  },
+  {
+    "image_name": "ecg_0070.png",
+    "max_confidence": 0.01821145787835121,
+    "mean_confidence": 0.005015709437429905,
+    "threshold_detections": {
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 0
+    }
+  },
+  {
+    "image_name": "ecg_0058.png",
+    "max_confidence": 0.014516404829919338,
+    "mean_confidence": 0.004888319410383701,
+    "threshold_detections": {
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 0
+    }
+  },
+  {
+    "image_name": "ecg_0110.png",
+    "max_confidence": 0.013294619508087635,
+    "mean_confidence": 0.004852380137890577,
+    "threshold_detections": {
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 0
+    }
+  },
+  {
+    "image_name": "ecg_0104.png",
+    "max_confidence": 0.015574959106743336,
+    "mean_confidence": 0.0049202414229512215,
+    "threshold_detections": {
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 0
+    }
+  }
+]
