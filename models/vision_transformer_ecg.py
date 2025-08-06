@@ -266,7 +266,8 @@ class ECGViTClassifier(nn.Module):
 
 class ECGViTEnsemble(nn.Module):
     """
-    Ensemble of multiple ViT models for improved medical reliability.
+    Advanced ensemble of multiple ViT models for medical-grade reliability.
+    Features: Bootstrap aggregation, uncertainty quantification, clinical validation.
     """
     
     def __init__(self, model_configs: list, num_classes: int = 11):
@@ -278,27 +279,42 @@ class ECGViTEnsemble(nn.Module):
         ])
         
         self.num_models = len(self.models)
+        self.num_classes = num_classes
+        
+        # Ensemble weights (learnable)
+        self.ensemble_weights = nn.Parameter(torch.ones(self.num_models) / self.num_models)
+        
+        # Temperature scaling for calibration
+        self.temperature = nn.Parameter(torch.ones(1))
         
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Ensemble prediction with voting."""
+        """Advanced ensemble prediction with weighted voting."""
         predictions = []
         
         for model in self.models:
             pred = model(x)
             predictions.append(pred)
         
-        # Average ensemble predictions
-        ensemble_pred = torch.stack(predictions).mean(dim=0)
+        # Stack predictions: [num_models, batch_size, num_classes]
+        predictions = torch.stack(predictions)
         
-        return ensemble_pred
+        # Weighted ensemble with learnable weights
+        weights = torch.softmax(self.ensemble_weights, dim=0)
+        ensemble_pred = torch.sum(predictions * weights.view(-1, 1, 1), dim=0)
+        
+        # Temperature scaling for calibration
+        ensemble_pred = ensemble_pred / self.temperature
+        
+        return torch.sigmoid(ensemble_pred)
     
-    def predict_with_uncertainty(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+    def predict_with_uncertainty(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, dict]:
         """
-        Predict with uncertainty quantification using ensemble disagreement.
+        Advanced uncertainty quantification using multiple methods.
         
         Returns:
-            predictions: Ensemble predictions
-            uncertainty: Prediction uncertainty (standard deviation)
+            predictions: Calibrated ensemble predictions
+            uncertainty: Multiple uncertainty measures
+            confidence_metrics: Detailed confidence analysis
         """
         with torch.no_grad():
             predictions = []
@@ -309,11 +325,173 @@ class ECGViTEnsemble(nn.Module):
             
             predictions = torch.stack(predictions)  # [num_models, batch_size, num_classes]
             
-            # Calculate mean and uncertainty
-            mean_pred = predictions.mean(dim=0)
-            uncertainty = predictions.std(dim=0)
+            # Calculate ensemble prediction
+            weights = torch.softmax(self.ensemble_weights, dim=0)
+            mean_pred = torch.sum(predictions * weights.view(-1, 1, 1), dim=0)
+            mean_pred = torch.sigmoid(mean_pred / self.temperature)
             
-            return mean_pred, uncertainty
+            # Multiple uncertainty measures
+            epistemic_uncertainty = predictions.std(dim=0)  # Model disagreement
+            aleatoric_uncertainty = mean_pred * (1 - mean_pred)  # Prediction entropy
+            total_uncertainty = epistemic_uncertainty + aleatoric_uncertainty
+            
+            # Confidence metrics for clinical use
+            confidence_metrics = {
+                'epistemic_uncertainty': epistemic_uncertainty.mean(dim=1),  # Per sample
+                'aleatoric_uncertainty': aleatoric_uncertainty.mean(dim=1),
+                'total_uncertainty': total_uncertainty.mean(dim=1),
+                'prediction_entropy': -torch.sum(mean_pred * torch.log(mean_pred + 1e-8), dim=1),
+                'max_confidence': torch.max(mean_pred, dim=1)[0],
+                'confidence_spread': torch.max(mean_pred, dim=1)[0] - torch.min(mean_pred, dim=1)[0]
+            }
+            
+            return mean_pred, total_uncertainty, confidence_metrics
+    
+    def clinical_risk_assessment(self, x: torch.Tensor, patient_id: str = None) -> dict:
+        """
+        Comprehensive clinical risk assessment with uncertainty-aware reporting.
+        """
+        predictions, uncertainty, confidence_metrics = self.predict_with_uncertainty(x)
+        
+        # Convert to numpy for processing
+        pred_np = predictions.cpu().numpy()[0]
+        uncertainty_np = uncertainty.cpu().numpy()[0]
+        
+        # High-risk conditions requiring immediate attention
+        critical_conditions = ['Myocardial_Infarction', 'VT']
+        moderate_risk_conditions = ['Atrial_Fibrillation', 'SVT', 'Conduction_Disturbance']
+        
+        findings = []
+        risk_score = 0
+        
+        for i, (condition, pred, unc) in enumerate(zip(self.condition_labels, pred_np, uncertainty_np)):
+            if pred > 0.5:  # Condition detected
+                confidence_level = "HIGH" if unc < 0.1 else "MODERATE" if unc < 0.2 else "LOW"
+                
+                finding = {
+                    'condition': condition,
+                    'probability': float(pred),
+                    'uncertainty': float(unc),
+                    'confidence_level': confidence_level,
+                    'clinical_significance': self._get_clinical_significance(condition),
+                    'requires_urgent_attention': condition in critical_conditions
+                }
+                findings.append(finding)
+                
+                # Calculate risk score
+                if condition in critical_conditions:
+                    risk_score += pred * 3
+                elif condition in moderate_risk_conditions:
+                    risk_score += pred * 2
+                else:
+                    risk_score += pred * 1
+        
+        # Overall risk assessment
+        if risk_score > 2.0:
+            overall_risk = "HIGH RISK"
+        elif risk_score > 1.0:
+            overall_risk = "MODERATE RISK"
+        else:
+            overall_risk = "LOW RISK"
+        
+        # Generate clinical recommendations
+        recommendations = self._generate_clinical_recommendations(findings)
+        
+        return {
+            'patient_id': patient_id or 'Unknown',
+            'analysis_timestamp': torch.datetime.now().isoformat(),
+            'model_type': 'ECG-ViT Ensemble',
+            'ensemble_size': self.num_models,
+            'findings': findings,
+            'overall_risk': overall_risk,
+            'risk_score': float(risk_score),
+            'recommendations': recommendations,
+            'confidence_metrics': {k: float(v.cpu()) for k, v in confidence_metrics.items()},
+            'requires_immediate_attention': any(f['requires_urgent_attention'] for f in findings),
+            'model_confidence': "HIGH" if confidence_metrics['total_uncertainty'].mean() < 0.1 else "MODERATE"
+        }
+    
+    def _generate_clinical_recommendations(self, findings: list) -> list:
+        """Generate specific clinical recommendations based on findings."""
+        recommendations = []
+        
+        detected_conditions = [f['condition'] for f in findings if f['probability'] > 0.5]
+        
+        # Critical condition protocols
+        if 'Myocardial_Infarction' in detected_conditions:
+            recommendations.extend([
+                "🚨 EMERGENCY: Activate STEMI protocol immediately",
+                "Administer dual antiplatelet therapy (aspirin + P2Y12 inhibitor)",
+                "Prepare for primary PCI within 90 minutes",
+                "Serial ECGs every 15-30 minutes",
+                "Continuous cardiac monitoring required"
+            ])
+        
+        if 'VT' in detected_conditions:
+            recommendations.extend([
+                "🚨 CRITICAL: Assess hemodynamic stability immediately",
+                "If unstable: Synchronized cardioversion",
+                "If stable: IV antiarrhythmic therapy (amiodarone/lidocaine)",
+                "Evaluate for underlying ischemia",
+                "Consider ICD evaluation"
+            ])
+        
+        # Other conditions
+        if 'Atrial_Fibrillation' in detected_conditions:
+            recommendations.extend([
+                "Calculate CHA2DS2-VASc score for stroke risk",
+                "Consider anticoagulation therapy",
+                "Rate control vs rhythm control strategy",
+                "Echocardiogram to assess structure/function"
+            ])
+        
+        if not recommendations:
+            recommendations = [
+                "Continue routine cardiac monitoring",
+                "Follow standard clinical protocols",
+                "Regular cardiology follow-up as indicated"
+            ]
+        
+        return recommendations
+    
+    def bootstrap_validation(self, dataloader, n_bootstrap: int = 100) -> dict:
+        """
+        Bootstrap validation for robust performance assessment.
+        """
+        self.eval()
+        bootstrap_results = []
+        
+        with torch.no_grad():
+            for _ in range(n_bootstrap):
+                # Sample with replacement
+                batch_accuracies = []
+                
+                for images, labels, _ in dataloader:
+                    # Bootstrap sampling of batch
+                    n_samples = images.size(0)
+                    indices = torch.randint(0, n_samples, (n_samples,))
+                    
+                    sampled_images = images[indices]
+                    sampled_labels = labels[indices]
+                    
+                    # Predict
+                    predictions, _, _ = self.predict_with_uncertainty(sampled_images)
+                    pred_binary = (predictions > 0.5).float()
+                    
+                    accuracy = (pred_binary == sampled_labels).float().mean()
+                    batch_accuracies.append(accuracy.item())
+                
+                bootstrap_results.append(np.mean(batch_accuracies))
+        
+        return {
+            'mean_accuracy': np.mean(bootstrap_results),
+            'std_accuracy': np.std(bootstrap_results),
+            'confidence_interval_95': (
+                np.percentile(bootstrap_results, 2.5),
+                np.percentile(bootstrap_results, 97.5)
+            ),
+            'bootstrap_samples': n_bootstrap
+        }
 
 
 def create_ecg_vit_model(

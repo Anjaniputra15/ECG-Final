@@ -10,7 +10,50 @@ import torch.nn.functional as F
 import numpy as np
 from typing import Dict, List, Tuple, Optional, Union
 import math
-from transformers import ViTModel, ViTConfig
+
+try:
+    from transformers import ViTModel, ViTConfig
+except ImportError:
+    print("Transformers library not available, using simple implementation")
+    
+    class SimpleViTConfig:
+        def __init__(self, image_size=224, patch_size=16, hidden_size=768, **kwargs):
+            self.image_size = image_size
+            self.patch_size = patch_size
+            self.hidden_size = hidden_size
+    
+    class SimpleViTModel(nn.Module):
+        def __init__(self, config):
+            super().__init__()
+            self.config = config
+            self.embeddings = nn.Linear(config.patch_size * config.patch_size * 3, config.hidden_size)
+            self.encoder = nn.TransformerEncoder(
+                nn.TransformerEncoderLayer(config.hidden_size, 8, batch_first=True),
+                num_layers=6
+            )
+            self.pooler = nn.Linear(config.hidden_size, config.hidden_size)
+            
+        def forward(self, pixel_values):
+            # Simple patch embedding
+            B, C, H, W = pixel_values.shape
+            patch_size = self.config.patch_size
+            patches = pixel_values.unfold(2, patch_size, patch_size).unfold(3, patch_size, patch_size)
+            patches = patches.contiguous().view(B, C, -1, patch_size, patch_size)
+            patches = patches.permute(0, 2, 1, 3, 4).contiguous().view(B, -1, C * patch_size * patch_size)
+            
+            embeddings = self.embeddings(patches)
+            encoded = self.encoder(embeddings)
+            pooled = self.pooler(encoded.mean(dim=1))
+            
+            class Output:
+                def __init__(self, last_hidden_state, pooler_output):
+                    self.last_hidden_state = last_hidden_state
+                    self.pooler_output = pooler_output
+            
+            return Output(encoded, pooled)
+    
+    ViTModel = SimpleViTModel
+    ViTConfig = SimpleViTConfig
 
 # Import existing components
 import sys

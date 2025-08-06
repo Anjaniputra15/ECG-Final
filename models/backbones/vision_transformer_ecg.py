@@ -7,9 +7,57 @@ State-of-the-art approach using Vision Transformer + DETR for PQRST detection
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from transformers import ViTModel, ViTConfig
 import math
 from typing import Dict, List, Tuple, Optional
+
+try:
+    from transformers import ViTModel, ViTConfig
+except ImportError:
+    print("Transformers library not available, using simple ViT implementation")
+    
+    class SimpleViTConfig:
+        def __init__(self, image_size=224, patch_size=16, hidden_size=768, **kwargs):
+            self.image_size = image_size
+            self.patch_size = patch_size
+            self.hidden_size = hidden_size
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+    
+    class SimpleViTModel(nn.Module):
+        def __init__(self, config):
+            super().__init__()
+            self.config = config
+            patch_dim = config.patch_size * config.patch_size * 3
+            self.embeddings = nn.Linear(patch_dim, config.hidden_size)
+            self.encoder = nn.TransformerEncoder(
+                nn.TransformerEncoderLayer(config.hidden_size, 8, batch_first=True),
+                num_layers=6
+            )
+            
+        def forward(self, pixel_values):
+            B, C, H, W = pixel_values.shape
+            patch_size = self.config.patch_size
+            
+            # Calculate number of patches
+            num_patches_h = H // patch_size
+            num_patches_w = W // patch_size
+            
+            # Reshape to patches
+            patches = pixel_values.view(B, C, num_patches_h, patch_size, num_patches_w, patch_size)
+            patches = patches.permute(0, 2, 4, 1, 3, 5).contiguous()
+            patches = patches.view(B, num_patches_h * num_patches_w, C * patch_size * patch_size)
+            
+            embeddings = self.embeddings(patches)
+            encoded = self.encoder(embeddings)
+            
+            class Output:
+                def __init__(self, last_hidden_state):
+                    self.last_hidden_state = last_hidden_state
+            
+            return Output(encoded)
+    
+    ViTModel = SimpleViTModel
+    ViTConfig = SimpleViTConfig
 
 class ECGViTConfig:
     """Configuration for ECG Vision Transformer"""
@@ -106,13 +154,19 @@ class ECGTransformerDecoder(nn.Module):
         queries = self.query_embed.weight.unsqueeze(0).repeat(batch_size, 1, 1)
         
         # Add positional encoding to encoder features
-        encoder_features = self.pos_encoding(encoder_features.transpose(0, 1)).transpose(0, 1)
+        # For batch_first=True, we need to handle dimensions correctly
+        seq_len = encoder_features.size(1)
+        pos_encoding = self.pos_encoding.pe[:seq_len, :].squeeze()  # Remove extra dims
+        if pos_encoding.dim() == 1:
+            pos_encoding = pos_encoding.unsqueeze(0)
+        pos_encoding = pos_encoding.unsqueeze(0).expand(batch_size, -1, -1)
+        encoder_features = encoder_features + pos_encoding
         
-        # Transformer decoder
+        # Transformer decoder (batch_first=True)
         decoder_output = self.transformer_decoder(
             queries, 
-            encoder_features.transpose(0, 1)
-        ).transpose(0, 1)
+            encoder_features
+        )
         
         # Predictions
         class_logits = self.class_head(decoder_output)

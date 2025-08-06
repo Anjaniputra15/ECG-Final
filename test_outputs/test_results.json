@@ -1,0 +1,8 @@
+{
+  "augmentation": true,
+  "vit_model": true,
+  "multimodal": true,
+  "balanced_loss": true,
+  "uncertainty": true,
+  "attention_viz": true
+}

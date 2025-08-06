@@ -203,13 +203,12 @@ class ECGModelTester:
             model = create_ecg_vit_detr_model(pretrained=False)
             model.to(self.device)
             
-            # Get sample data
-            sample_data = self.create_sample_data()
-            images = sample_data['ecg_images'].to(self.device)
+            # Get sample data - need 512x512 for ViT model
+            sample_images = torch.randn(4, 3, 512, 512).to(self.device)
             
             # Test forward pass
             with torch.no_grad():
-                outputs = model(images)
+                outputs = model(sample_images)
             
             print(f"  Model output keys: {list(outputs.keys())}")
             for key, value in outputs.items():
@@ -466,16 +465,16 @@ class ECGModelTester:
         print("🏁 TEST RESULTS SUMMARY")
         print("=" * 50)
         
-        passed = sum(self.test_results.values())
+        passed_count = sum(self.test_results.values())
         total = len(self.test_results)
         
-        for test_name, passed in self.test_results.items():
-            status = "✅ PASSED" if passed else "❌ FAILED"
+        for test_name, test_passed in self.test_results.items():
+            status = "✅ PASSED" if test_passed else "❌ FAILED"
             print(f"{test_name:20} {status}")
         
-        print(f"\nOverall: {passed}/{total} tests passed ({passed/total*100:.1f}%)")
+        print(f"\nOverall: {passed_count}/{total} tests passed ({passed_count/total*100:.1f}%)")
         
-        if passed == total:
+        if passed_count == total:
             print("🎉 All tests passed! Models are ready for use.")
         else:
             print("⚠️  Some tests failed. Check the error messages above.")

@@ -320,7 +320,7 @@ def main():
         trainer = ECGViTTrainer(args.data_path, model_type=args.model_type)
         trainer.train(args.epochs)
         
-    elif args.mode in ['predict', 'report']:
+    elif args.mode in ['predict', 'report', 'ensemble']:
         if not args.image:
             print("Error: --image required for prediction/report mode")
             return

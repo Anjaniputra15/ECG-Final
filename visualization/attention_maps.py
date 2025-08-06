@@ -17,9 +17,19 @@ from typing import Dict, List, Tuple, Optional, Union
 from pathlib import Path
 import json
 
-# For gradient-based methods
-from captum.attr import IntegratedGradients, GradCAM, GuidedGradCam, Occlusion
-from captum.attr import visualization as viz
+# Try to import Captum for interpretability
+try:
+    from captum.attr import IntegratedGradients, GradCAM, GuidedGradCam, Occlusion
+    from captum.attr import visualization as viz
+    CAPTUM_AVAILABLE = True
+except ImportError:
+    print("Captum not available, using basic attention visualization")
+    CAPTUM_AVAILABLE = False
+    IntegratedGradients = None
+    GradCAM = None
+    GuidedGradCam = None
+    Occlusion = None
+    viz = None
 
 
 class AttentionVisualizer:
@@ -253,6 +263,15 @@ class AttentionVisualizer:
         Returns:
             Matplotlib figure
         """
+        if not CAPTUM_AVAILABLE:
+            print("Captum not available, skipping Grad-CAM visualization")
+            fig, ax = plt.subplots(figsize=(8, 6))
+            ax.imshow(original_image)
+            ax.set_title("Grad-CAM not available (Captum required)")
+            ax.axis('off')
+            if save_path:
+                plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            return fig
         # Get model's final convolutional layer
         target_layer = None
         if hasattr(self.model, 'vit_backbone'):
