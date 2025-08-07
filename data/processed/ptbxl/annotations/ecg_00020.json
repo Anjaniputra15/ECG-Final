@@ -1,0 +1,15 @@
+{
+  "record_id": 20,
+  "image_path": "images/ecg_00020.png",
+  "mask_path": "masks/ecg_00020.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {
+    "Atrial_Flutter": 100.0
+  },
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "supraventrikul\u00c4re ersatzsystole(n) interponierte supraventrikul\u00c4re extrasystole(n) supraventrikul\u00c4re tachykardie linkstyp rechtsschenkelblock qrs(t) abnormal    inferiorer infarkt     alter unbest."
+}

@@ -1,0 +1,13 @@
+{
+  "record_id": 45,
+  "image_path": "images/ecg_00045.png",
+  "mask_path": "masks/ecg_00045.png",
+  "age": 51,
+  "sex": 0,
+  "height": null,
+  "weight": 106.0,
+  "diagnostic_labels": {},
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "sinusrhythmus unvollst\u00c4ndiger rechtsschenkelblock sonst normales ekg"
+}

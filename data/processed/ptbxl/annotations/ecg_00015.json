@@ -1,0 +1,15 @@
+{
+  "record_id": 15,
+  "image_path": "images/ecg_00015.png",
+  "mask_path": "masks/ecg_00015.png",
+  "age": 17,
+  "sex": 1,
+  "height": null,
+  "weight": 67.0,
+  "diagnostic_labels": {
+    "Normal": 100.0
+  },
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "sinus arrhythmie sonst normales ekg"
+}

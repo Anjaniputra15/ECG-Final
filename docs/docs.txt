@@ -742,3 +742,152 @@ python test_live_model.py --model [MODEL] --image ecg.png --threshold 0.05
 **🎉 PHASE 4 COMPLETE: BOOTSTRAP R-PEAK DETECTION WITH LIVE TESTING CAPABILITY**
 *Bootstrap Training completed: August 7, 2025*
 *Ready for Gemini AI integration phase*
+
+---
+
+## Z. PHASE 5: GPT-OSS FINE-TUNING INTEGRATION PLAN ✅ PLANNED
+
+### 🧠 **GPT-OSS FINE-TUNING ENHANCEMENT STRATEGY**
+
+#### **Strategic Objective**: 
+Add GPT fine-tuning as 4th AI layer to create world's most advanced ECG analysis system combining computer vision, traditional ML, and large language models.
+
+### 📋 **5-PHASE IMPLEMENTATION ROADMAP:**
+
+#### **PHASE 5.1: RESEARCH & REQUIREMENTS** (Week 1)
+```
+📚 GPT-OSS Investigation:
+├── GPT-3.5/GPT-4 fine-tuning APIs and costs
+├── OpenAI fine-tuning data format requirements  
+├── Medical domain fine-tuning best practices
+├── Token limits and context window considerations
+└── Integration with existing PyTorch models
+
+Technical Requirements:
+├── OpenAI API access and billing setup
+├── Training data format: JSONL for GPT fine-tuning
+├── Compute resources: Cloud-based fine-tuning
+└── Evaluation metrics: Medical accuracy benchmarks
+```
+
+#### **PHASE 5.2: ECG DATA PREPARATION** (Week 2)
+```
+🔄 Data Pipeline Design:
+Current ECG Data → GPT Training Format:
+├── ECG Images: Convert to text descriptions
+├── Technical Results: Structure as JSON/text
+├── Medical Annotations: Clinical reasoning chains
+├── Gemini Analyses: Use as training examples
+└── Synthetic Data: Generate more training pairs
+
+Training Data Sources:
+├── Existing Results: Bootstrap + ViT + ResNet outputs
+├── Gemini Analyses: Professional medical interpretations
+├── PTB-XL Annotations: Clinical labels and reports
+├── Synthetic ECG Descriptions: Generated text representations
+└── Medical Literature: ECG interpretation guidelines
+```
+
+#### **PHASE 5.3: INTEGRATION ARCHITECTURE** (Week 3)
+```
+🏗️ GPT-Enhanced ECG-LLM Architecture:
+Input ECG Image
+    ↓
+[Bootstrap Model] → R-peak coordinates
+    ↓
+[ViT Model] → PQRST detections  
+    ↓
+[ResNet Model] → Cardiac classifications
+    ↓
+[Data Fusion Layer] → Combined technical analysis
+    ↓
+[GPT Fine-tuned Model] → Clinical reasoning & reports
+    ↓
+[Gemini AI] → Validation & enhancement
+    ↓
+Final Medical Report
+```
+
+#### **PHASE 5.4: MODEL ENSEMBLE STRATEGY** (Week 4)
+```
+🤝 Multi-Model Coordination:
+Parallel Processing:
+├── Technical Models: Fast numerical analysis
+├── GPT Model: Deep clinical reasoning
+├── Gemini AI: Quality validation
+└── Ensemble Logic: Weighted decision making
+
+Confidence Scoring:
+├── Technical Confidence: Model uncertainty quantification
+├── GPT Confidence: Response probability scores
+├── Medical Consistency: Cross-validation between models
+└── Final Confidence: Ensemble agreement score
+```
+
+#### **PHASE 5.5: EVALUATION FRAMEWORK** (Week 5)
+```
+📊 Comprehensive Testing Strategy:
+Technical Benchmarks:
+├── R-peak detection accuracy (vs ground truth)
+├── Classification performance (11 cardiac conditions)
+├── Processing speed (end-to-end latency)
+└── Memory usage (GPU/CPU requirements)
+
+Clinical Benchmarks:
+├── Medical accuracy (cardiologist validation)
+├── Report quality (clinical utility scores)
+├── Risk stratification (sensitivity/specificity)
+└── Diagnostic consistency (inter-model agreement)
+
+GPT-Specific Metrics:
+├── Clinical reasoning quality
+├── Medical terminology accuracy
+├── Report coherence and structure
+└── Hallucination detection (medical safety)
+```
+
+### 💰 **IMPLEMENTATION OPTIONS:**
+
+#### **Option A: GPT-3.5 Fine-tuning** (Recommended Start)
+```
+Cost-Effective Approach:
+├── Training Cost: ~$100-500 for initial experiments
+├── Inference Cost: ~$0.002 per 1K tokens
+├── Medical Focus: ECG interpretation specialization
+└── Integration: API-based with existing system
+```
+
+#### **Option B: GPT-4 Fine-tuning** (Advanced)
+```  
+Premium Performance:
+├── Training Cost: ~$1000-5000 for comprehensive training
+├── Superior Reasoning: Better clinical analysis
+├── Multimodal: Potential image + text understanding
+└── Research Value: Cutting-edge medical AI
+```
+
+### 🎯 **EXPECTED ENHANCEMENTS:**
+
+#### **New Capabilities:**
+- **Natural Language ECG Analysis**: Conversational medical interpretation
+- **Clinical Reasoning Chains**: Step-by-step diagnostic logic
+- **Patient Communication**: Simplified medical explanations
+- **Research Insights**: Advanced pattern recognition across cases
+
+#### **Commercial Value Addition:**
+- **Market Differentiation**: GPT-enhanced medical AI system
+- **Premium Pricing**: Advanced AI justifies AUD $200-300/hour rates
+- **Scalability**: Cloud-based processing capability
+- **Research Potential**: Novel multimodal medical AI platform
+
+### 🚀 **DEVELOPMENT STATUS:**
+- **Current System**: 3 production models + Gemini AI integration
+- **Next Phase**: GPT-OSS fine-tuning integration
+- **Timeline**: 5-week implementation plan
+- **Investment**: $100-5000 for GPT fine-tuning experiments
+
+---
+
+**🧠 FUTURE PHASE: WORLD'S MOST ADVANCED ECG-LLM SYSTEM WITH GPT FINE-TUNING**
+*GPT-OSS Integration planned: August 2025*
+*Next evolution: Multi-modal AI medical analysis platform*

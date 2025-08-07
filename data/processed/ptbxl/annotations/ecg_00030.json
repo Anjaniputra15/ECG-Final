@@ -1,0 +1,13 @@
+{
+  "record_id": 30,
+  "image_path": "images/ecg_00030.png",
+  "mask_path": "masks/ecg_00030.png",
+  "age": 25,
+  "sex": 0,
+  "height": null,
+  "weight": 83.0,
+  "diagnostic_labels": {},
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "sinusrhythmus unspezifischer intraventrikul\u00c4rer block linkshypertrophie"
+}

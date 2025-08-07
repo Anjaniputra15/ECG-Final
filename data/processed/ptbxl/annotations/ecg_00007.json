@@ -1,0 +1,15 @@
+{
+  "record_id": 7,
+  "image_path": "images/ecg_00007.png",
+  "mask_path": "masks/ecg_00007.png",
+  "age": 54,
+  "sex": 0,
+  "height": null,
+  "weight": 83.0,
+  "diagnostic_labels": {
+    "Normal": 100.0
+  },
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus linkstyp t abnormal, wahrscheinlich    inferiorer myokardschaden qt-verl\u00c4ngerung"
+}

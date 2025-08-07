@@ -1,0 +1,16 @@
+{
+  "record_id": 17,
+  "image_path": "images/ecg_00017.png",
+  "mask_path": "masks/ecg_00017.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {
+    "Atrial_Flutter": 100.0,
+    "Atrial_Fibrillation": 0.0
+  },
+  "heart_axis": "ALAD",
+  "device": "CS-12   E",
+  "report": "vorhof:hf  280 tachykardes vorhofflimmern ueberdrehter linkstyp qrs(t) abnormal    inferiorer infarkt     alter unbest."
+}

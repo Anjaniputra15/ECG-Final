@@ -1,0 +1,15 @@
+{
+  "record_id": 1,
+  "image_path": "images/ecg_00001.png",
+  "mask_path": "masks/ecg_00001.png",
+  "age": 56,
+  "sex": 1,
+  "height": null,
+  "weight": 63.0,
+  "diagnostic_labels": {
+    "Normal": 100.0
+  },
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "sinusrhythmus periphere niederspannung"
+}

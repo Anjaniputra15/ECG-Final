@@ -1,0 +1,15 @@
+{
+  "record_id": 40,
+  "image_path": "images/ecg_00040.png",
+  "mask_path": "masks/ecg_00040.png",
+  "age": 60,
+  "sex": 0,
+  "height": null,
+  "weight": 85.0,
+  "diagnostic_labels": {
+    "Normal": 80.0
+  },
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus linkstyp sonst normales ekg"
+}

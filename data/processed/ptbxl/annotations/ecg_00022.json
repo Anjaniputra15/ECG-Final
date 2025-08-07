@@ -1,0 +1,13 @@
+{
+  "record_id": 22,
+  "image_path": "images/ecg_00022.png",
+  "mask_path": "masks/ecg_00022.png",
+  "age": 17,
+  "sex": 1,
+  "height": null,
+  "weight": 53.0,
+  "diagnostic_labels": {},
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus linkstyp unspezifisches abnormales t"
+}

@@ -1,0 +1,13 @@
+{
+  "record_id": 49,
+  "image_path": "images/ecg_00049.png",
+  "mask_path": "masks/ecg_00049.png",
+  "age": 23,
+  "sex": 0,
+  "height": null,
+  "weight": 76.0,
+  "diagnostic_labels": {},
+  "heart_axis": "RAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus rechtstyp unspezifische intraventrikul\u00c4re leitungsst\u00d6rung"
+}

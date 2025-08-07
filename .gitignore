@@ -1,78 +1,81 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# ECG-LLM Project .gitignore
+# Exclude personal/sensitive files from GitHub sync
 
-# Virtual environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# RPL Documentation (personal academic files)
+rpl.docs
+*.rpl
+RPL_*
+recognition_prior_learning*
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Claude/AI Assistant files  
+claude*
+*claude*
+CLAUDE.md
+.claude*
+ai_assistant*
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# Personal documentation
+personal_notes*
+academic_records*
+university_docs*
 
-# Data directories
-data/raw/scanned_ecgs/*.jpg
-data/raw/scanned_ecgs/*.png
-data/raw/scanned_ecgs/*.pdf
-data/processed/
-data/annotations/manual/
-data/annotations/automated/
-data/annotations/refined/
+# Large datasets (download in Colab instead)
+data/raw/
+data/ptb-xl*/
+*.zip
+ptbxl_*
+ecg_data_large/
 
-# Model files
+# Model checkpoints (too large for GitHub)
 *.pth
 *.ckpt
-*.h5
-models/saved/
-models/checkpoints/
+checkpoints/
+experiments/*/models/
+experiments/bootstrap_training_*/
+experiments/real_data_test_*/
 
-# Logs
-logs/
-*.log
-wandb/
-tensorboard_logs/
-
-# OS
+# Environment and local configs
+.env
+.env.local
+local_config.json
+personal_config.py
+venv/
+__pycache__/
+*.pyc
+*.pyo
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+.vscode/
+.idea/
 
 # Temporary files
+temp/
+tmp/
 *.tmp
-*.temp
-.cache/
+*.swp
+*.log
+logs/
+
+# Output files that can be regenerated
+test_outputs/
+results/temp/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Personal API keys or credentials
+*key*
+*secret*
+*token*
+credentials.json
+config.private.json
+
+# OS generated files
+Thumbs.db
+.DS_Store
+*.DS_Store
+
+# IDE files
+.windsurf/
+.cursor/
+*.code-workspace

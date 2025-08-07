@@ -1,0 +1,13 @@
+{
+  "record_id": 8,
+  "image_path": "images/ecg_00008.png",
+  "mask_path": "masks/ecg_00008.png",
+  "age": 48,
+  "sex": 0,
+  "height": null,
+  "weight": 95.0,
+  "diagnostic_labels": {},
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus linkstyp qrs(t) abnormal    inferiorer infarkt     alter unbest."
+}

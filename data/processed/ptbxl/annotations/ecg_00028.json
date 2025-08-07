@@ -1,0 +1,13 @@
+{
+  "record_id": 28,
+  "image_path": "images/ecg_00028.png",
+  "mask_path": "masks/ecg_00028.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {},
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus verdacht auf p-sinistrocardiale linkstyp unspezifisches abnormales t qt-verl\u00c4ngerung sr unter 3x1 cordichin stabil. novodigal 0.2 1x1 ass 100  1x1 tromcardin 1x2 neu:1/2 tensobon 25 f\u00dcr  rr"
+}

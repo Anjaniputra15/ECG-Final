@@ -1,0 +1,15 @@
+{
+  "record_id": 47,
+  "image_path": "images/ecg_00047.png",
+  "mask_path": "masks/ecg_00047.png",
+  "age": 41,
+  "sex": 0,
+  "height": null,
+  "weight": 62.0,
+  "diagnostic_labels": {
+    "Normal": 100.0
+  },
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "sinusrhythmus normales ekg"
+}

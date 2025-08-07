@@ -1,0 +1,15 @@
+{
+  "record_id": 18,
+  "image_path": "images/ecg_00018.png",
+  "mask_path": "masks/ecg_00018.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {
+    "Atrial_Flutter": 100.0
+  },
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "vorhofflattern 2:1 \u00dcberleitung,jetzt nach isoptin 2amp+ 1 amp digitalis teilweise 3:1 .vorhof:ca. hf:265 linkstyp st-senkung ii  iii avf  v4-v6  bei tachycardie"
+}

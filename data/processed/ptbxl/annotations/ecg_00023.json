@@ -1,0 +1,15 @@
+{
+  "record_id": 23,
+  "image_path": "images/ecg_00023.png",
+  "mask_path": "masks/ecg_00023.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {
+    "Atrial_Flutter": 100.0
+  },
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "2:1 \u00dcberleitung bei vorhofflattern,jetzt unter 3x1  cordichin + 1x1 novodigal 0,2 etwas langsamer hf von 140 auf 128,sonst unver\u00c4ndert."
+}

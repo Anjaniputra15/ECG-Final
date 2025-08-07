@@ -1,0 +1,13 @@
+{
+  "record_id": 26,
+  "image_path": "images/ecg_00026.png",
+  "mask_path": "masks/ecg_00026.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {},
+  "heart_axis": "LAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus verdacht auf p-sinistrocardiale linkstyp unspezifisches abnormales t qt-verl\u00c4ngerung zweiter tag 3x2 cordichin erfolgreiche cardioversion von vorhofflattern (novodigal 0,2 1x1)"
+}

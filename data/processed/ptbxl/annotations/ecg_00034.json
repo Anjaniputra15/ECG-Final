@@ -1,0 +1,15 @@
+{
+  "record_id": 34,
+  "image_path": "images/ecg_00034.png",
+  "mask_path": "masks/ecg_00034.png",
+  "age": 56,
+  "sex": 0,
+  "height": null,
+  "weight": null,
+  "diagnostic_labels": {
+    "Atrial_Flutter": 100.0
+  },
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "erneut vorhofflattern unter 3x1 cordichin ,1x0,2 novod. und neu 1x1/2 tensobon 25 mg (danach anamnestisch  kurzer schwei\u00e1ausbruch ,langsamer puls--seither wider hoher puls um 125! dh. umgesprungen. q"
+}

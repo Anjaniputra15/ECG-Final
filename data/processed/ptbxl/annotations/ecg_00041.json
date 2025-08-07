@@ -1,0 +1,13 @@
+{
+  "record_id": 41,
+  "image_path": "images/ecg_00041.png",
+  "mask_path": "masks/ecg_00041.png",
+  "age": 42,
+  "sex": 0,
+  "height": null,
+  "weight": 65.0,
+  "diagnostic_labels": {},
+  "heart_axis": "ALAD",
+  "device": "CS-12   E",
+  "report": "sinusrhythmus ueberdrehter linkstyp linksanteriorer hemiblock"
+}

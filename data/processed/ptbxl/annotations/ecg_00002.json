@@ -1,0 +1,15 @@
+{
+  "record_id": 2,
+  "image_path": "images/ecg_00002.png",
+  "mask_path": "masks/ecg_00002.png",
+  "age": 19,
+  "sex": 0,
+  "height": null,
+  "weight": 70.0,
+  "diagnostic_labels": {
+    "Normal": 80.0
+  },
+  "heart_axis": null,
+  "device": "CS-12   E",
+  "report": "sinusbradykardie sonst normales ekg"
+}
